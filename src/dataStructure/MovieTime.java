@@ -2,6 +2,10 @@ package dataStructure;
 
 import java.time.LocalTime;
 
+/**
+ * 這個class負責處理時間
+ *
+ */
 public class MovieTime
 {
 	// 時間變數

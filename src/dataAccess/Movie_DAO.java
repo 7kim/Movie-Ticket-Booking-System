@@ -8,6 +8,10 @@ import java.sql.Time;
 import java.util.*;
 import dataStructure.*;
 
+/**
+ * 除了訂票退票外，這個class存放所有和MySQL連結的function，包含取得資料庫裡的table，以及查詢的function
+ *
+ */
 public class Movie_DAO
 {
 	// SQL Global 變數初始化
@@ -250,6 +254,14 @@ public class Movie_DAO
 		}
 	}	
 
+	/**
+	 *  這個function 是用來查詢電影評價，輸入網友評分，列出高於此分數的所有電影
+	 *  
+	 * @param score
+	 *            : 為一double，輸入的網友評價分數
+	 * @return ScoreSearchList
+	 *            : 回傳ScoreSearchList的物件，存有包含所有大於該分數的電影(電影為ScoreSearch的物件)
+	 */
 	public ScoreSearchList getScoreMovie(double score)
 	{
 		ScoreSearchList list = new ScoreSearchList();
@@ -272,6 +284,14 @@ public class Movie_DAO
 		return list;
 	}
 
+	/**
+	 * 這個function 是用來查詢電影票，輸入電影票ID，回傳該張電影票訊息
+	 * 
+	 * @param movieTicketID
+	 *            : 輸入電影票ID，ID為一字串，於訂票成功時產生
+	 * @return MovieTicket
+	 *            : 回傳MovieTicket物件，此物件存有該電影票ID裡的資訊(名稱、時間、廳位、座位)
+	 */
 	public MovieTicket getMovieTicket(String movieTicketID)
 	{
 		MovieTicket ticket = null;
@@ -296,6 +316,14 @@ public class Movie_DAO
 	}
 
 	
+	/**
+	 * 這個function 是用來查詢電影資訊，輸入電影ID，回傳指定電影資訊
+	 * 
+	 * @param movieID
+	 *            : 輸入電影票ID，ID為一整數
+	 * @return MovieInfo
+	 *            : 回傳MovieInfo物件，存放指定的電影資訊(名稱、分級、場次、廳位)
+	 */
 	public MovieInfo getMovieInfo_output(int movieID)
 	{
 		MovieInfo info = null;
@@ -325,6 +353,24 @@ public class Movie_DAO
 		return info;
 	}
 
+	/**
+	 *  這個function 是用來查詢某段期間、某區間片長，還有指定票數的所有電影及其場次
+	 *  
+	 * @param seatNum
+	 *　　　　　　　　　 :　輸入指定座位數，為一int
+	 * @param early
+     *　　　　　　　　　 :　輸入最早能看電影的時間，為一String
+	 * @param late
+     *　　　　　　　　　 :　輸入最晚能看電影的時間，為一String
+	 * @param longest
+     *　　　　　　　　　 :　輸入想看的最長片長，為一int
+	 * @param shortest
+     *　　　　　　　　　 :　輸入想看的最短片長，為一int
+	 * @return MoviePlayList
+	 *            : 回傳MoviePlayList的物件，存有所有符合上述條件的電影及場次(為MoviePlay的物件)
+	 * @throws Exception
+	 *            : 如果輸入不正確的時間
+	 */
 	public MoviePlayList getTimeInfor(int seatNum, String early, String late, int longest, int shortest) throws Exception
 	{
 		MoviePlayList list = new MoviePlayList();

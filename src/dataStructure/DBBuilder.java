@@ -14,6 +14,10 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
+/**
+ * 這個class存放所有將json檔建進MySQL、以及在MySQL裡創系統需要的額外table的functions
+ *
+ */
 public class DBBuilder {
 	// 設定DB變數初始值
 	Connection connection = null;

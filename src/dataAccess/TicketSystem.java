@@ -20,6 +20,10 @@ import dataStructure.MovieTicketList;
 import dataStructure.SeatNum;
 import dataStructure.Users;
 
+/**
+ * 這個class存放所有訂票退票的function
+ *
+ */
 public class TicketSystem {
 	// SQL Global 變數初始化
 			Connection connection = null;
